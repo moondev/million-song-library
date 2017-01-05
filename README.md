@@ -16,6 +16,7 @@ docker-compose is included with "Docker for Mac and "Docker for Windows". To ins
 4. `docker-compose up`
 5. Wait about 60 seconds and then view application on `http://localhost:3000`
 
+The images only need to be build once. To stop the application, `CTRL+C` or `docker-compose down` inside the folder.
 
 # Kenzan Million Song Library
 
