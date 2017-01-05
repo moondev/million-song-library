@@ -1,0 +1,51 @@
+version: '2'
+
+networks:
+  internal:
+    driver: bridge
+
+services:
+
+  cassandra:
+    build:
+      context: .
+      dockerfile: cassandra.dockerfile
+    container_name: msl-cassandra
+    networks:
+     internal:
+       aliases:
+        - spinnaker-cassandra
+    environment:
+      CASSANDRA_START_RPC: "true"
+  
+  client:
+    build:
+      context: .
+      dockerfile: client.dockerfile
+    container_name: msl-client
+    networks:
+     default:
+       aliases:
+        - client-external
+     internal:
+       aliases:
+        - msl-client
+    ports:
+     - 3000:3000
+
+  server:
+    build:
+      context: .
+      dockerfile: server.dockerfile
+    container_name: msl-server
+    networks:
+     internal:
+       aliases:
+        - msl-server
+     internal:
+       aliases:
+        - server-external
+    ports:
+     - 9003:9003
+     - 9002:9002
+     - 9001:9001

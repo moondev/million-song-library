@@ -42,7 +42,12 @@
                         </configuration>
                     </execution>
 
+
+
+
                     <!-- GENERATE SWAGGER CODEGEN ON EDGE SERVICES -->
+                   
+                   <!--
                     <execution>
                         <id>gen swagger on account-edge</id>
                         <goals>
@@ -118,6 +123,10 @@
                             </arguments>
                         </configuration>
                     </execution>
+
+
+-->
+
 
                 </executions>
             </plugin>
