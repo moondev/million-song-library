@@ -1,3 +1,12 @@
+# docker-compose instructions
+
+1. `clone repo and move to folder`
+2. `git submodule init; git submodule update`
+3. `docker-compose build`
+4. `docker-compose up`
+5. Wait about 60 seconds and then view application on `http://localhost:3000`
+
+
 # Kenzan Million Song Library
 
 The Million Song Library (MSL) project is a microservices-based Web application built using [AngularJS](https://angularjs.org/), a [Cassandra](http://cassandra.apache.org/) NoSQL database, and several [Netflix OSS](http://netflix.github.io/) tools such as Karyon, Zuul, and Eureka.
