@@ -14,7 +14,7 @@ services:
     networks:
      internal:
        aliases:
-        - spinnaker-cassandra
+        - msl-cassandra
     environment:
       CASSANDRA_START_RPC: "true"
   
@@ -38,6 +38,7 @@ services:
       context: .
       dockerfile: server.dockerfile
     container_name: msl-server
+    command: ["socat", "TCP-LISTEN:9042,fork,reuseaddr", "TCP:msl-cassandra:9042"]
     networks:
      internal:
        aliases:
@@ -49,3 +50,9 @@ services:
      - 9003:9003
      - 9002:9002
      - 9001:9001
+  
+  socat:
+    image: mondev/dind:dind
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    command: ["docker", "exec", "msl-server", "npm", "run", "serve-all"]

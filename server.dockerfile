@@ -8,9 +8,9 @@ RUN wget http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-mave
 
 RUN yum install -y apache-maven
 
-RUN curl --silent --location https://rpm.nodesource.com/setup_5.x | bash -
+RUN curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
 
-RUN yum -y install nodejs git bzip2
+RUN yum -y install nodejs git bzip2 socat rpm-build
 
 RUN yum -y install gcc-c++ make
 
@@ -26,15 +26,25 @@ RUN gem install asciidoctor
 
 COPY . /msl
 
+RUN echo "" > /msl/server/msl-account-edge/install-account-edge.sh
+
+RUN echo "" > /msl/server/msl-ratings-edge/install-ratings-edge.sh
+
 WORKDIR /msl/msl-pages
 
 RUN npm install -g swagger-parser; npm install -g swagger; npm install -g node-gyp
+
+RUN npm run generate-swagger-html
+
+RUN npm install webpack -g
 
 #RUN npm run parse-swagger-src
 
 RUN cd /msl/msl-pages; npm install -g bower; npm install; bower install --allow-root
 
-RUN npm install -g -y protractor && npm install -g -y selenium-webdriver
+RUN npm install -g -y protractor
+
+RUN npm install -g -y selenium-webdriver
 # RUN echo "\n" | alternatives --config java
 
 # RUN echo "\n" | alternatives --config javac

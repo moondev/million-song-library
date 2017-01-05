@@ -10,7 +10,7 @@ RUN yum install -y wget which curl
 
 RUN curl --silent --location https://rpm.nodesource.com/setup_5.x | bash -
 
-RUN yum -y install nodejs git bzip2
+RUN yum -y install nodejs git bzip2 socat
 
 RUN yum -y install gcc-c++ make
 
