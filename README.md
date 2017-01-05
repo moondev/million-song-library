@@ -1,6 +1,7 @@
 # docker-compose instructions
 
 Install Docker
+
 [Docker for Mac](https://docs.docker.com/docker-for-mac/)
 
 [Docker for Windows](https://docs.docker.com/docker-for-windows/)
