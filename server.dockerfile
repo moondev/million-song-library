@@ -26,6 +26,10 @@ RUN gem install asciidoctor
 
 COPY . /msl
 
+RUN rm /msl/msl-pages/package.json
+
+COPY ./client-package.json /msl/msl-pages/package.json
+
 RUN echo "" > /msl/server/msl-account-edge/install-account-edge.sh
 
 RUN echo "" > /msl/server/msl-ratings-edge/install-ratings-edge.sh
@@ -34,7 +38,7 @@ WORKDIR /msl/msl-pages
 
 RUN npm install -g swagger-parser; npm install -g swagger; npm install -g node-gyp
 
-RUN npm run generate-swagger-html
+# RUN npm run generate-swagger-html
 
 RUN npm install webpack -g
 
