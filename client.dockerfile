@@ -26,6 +26,10 @@ RUN gem install asciidoctor
 
 COPY . /msl
 
+RUN rm /msl/msl-pages/package.json
+
+COPY ./client-package.json /msl/msl-pages/package.json
+
 WORKDIR /msl/msl-pages
 
 RUN npm install -g swagger-parser; npm install -g swagger; npm install -g node-gyp
