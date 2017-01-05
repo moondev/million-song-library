@@ -2,7 +2,9 @@
 
 Install Docker
 [Docker for Mac](https://docs.docker.com/docker-for-mac/)
+
 [Docker for Windows](https://docs.docker.com/docker-for-windows/)
+
 [Native Docker for Linux](http://docs.docker.com/engine/installation/linux/)
 
 docker-compose is included with "Docker for Mac and "Docker for Windows". To install for Linux see [here](https://docs.docker.com/compose/install/)
