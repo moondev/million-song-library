@@ -1,6 +1,13 @@
 # docker-compose instructions
 
-1. `clone repo and move to folder`
+Install Docker
+[Docker for Mac](https://docs.docker.com/docker-for-mac/)
+[Docker for Windows](https://docs.docker.com/docker-for-windows/)
+[Native Docker for Linux](http://docs.docker.com/engine/installation/linux/)
+
+docker-compose is included with "Docker for Mac and "Docker for Windows". To install for Linux see [here](https://docs.docker.com/compose/install/)
+
+1. `clone repo and cd to folder`
 2. `git submodule init; git submodule update`
 3. `docker-compose build`
 4. `docker-compose up`
