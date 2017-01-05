@@ -11,6 +11,8 @@ WORKDIR ~/million-song-library/tools/cassandra
 COPY populate.py /populate.py
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
+
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
 RUN mkdir -p /var/lib/cassandra "$CASSANDRA_CONFIG" \
