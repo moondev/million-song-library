@@ -6,12 +6,6 @@ if [ "${1:0:1}" = '-' ]; then
 	set -- cassandra -f "$@"
 fi
 
-# allow the container to be started with `--user`
-if [ "$1" = 'cassandra' -a "$(id -u)" = '0' ]; then
-	chown -R cassandra /var/lib/cassandra /var/log/cassandra "$CASSANDRA_CONFIG"
-	exec gosu cassandra "$BASH_SOURCE" "$@"
-fi
-
 if [ "$1" = 'cassandra' ]; then
 	: ${CASSANDRA_RPC_ADDRESS='0.0.0.0'}
 
@@ -31,8 +25,8 @@ if [ "$1" = 'cassandra' ]; then
 		: ${CASSANDRA_SEEDS:="cassandra"}
 	fi
 	: ${CASSANDRA_SEEDS:="$CASSANDRA_BROADCAST_ADDRESS"}
-	
-	sed -ri 's/(- seeds:).*/\1 "'"$CASSANDRA_SEEDS"'"/' "$CASSANDRA_CONFIG/cassandra.yaml"
+
+	sed -ri 's/(- seeds:) "127.0.0.1"/\1 "'"$CASSANDRA_SEEDS"'"/' "$CASSANDRA_CONFIG/cassandra.yaml"
 
 	for yaml in \
 		broadcast_address \
@@ -59,6 +53,7 @@ if [ "$1" = 'cassandra' ]; then
 		fi
 	done
 fi
+
 
 nohup python /populate.py &
 

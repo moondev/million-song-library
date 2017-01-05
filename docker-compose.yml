@@ -55,4 +55,4 @@ services:
     image: mondev/dind:dind
     volumes:
     - /var/run/docker.sock:/var/run/docker.sock
-    command: ["docker", "exec", "msl-server", "npm", "run", "serve-all"]
+    command: ["bash", "-c", "sleep 30; docker exec msl-server npm run serve-all"]

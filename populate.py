@@ -14,7 +14,7 @@ while portOpen == False:
 
 #os.system("nodetool enablethrift")
 
-os.system("cqlsh -f /msl_dat_latest.cql")
-os.system("cqlsh -f /msl_ddl_latest.cql")
+os.system("cqlsh -f msl_ddl_latest.cql")
+os.system("cqlsh -f msl_dat_latest.cql")
 
 print "msl data populated"
