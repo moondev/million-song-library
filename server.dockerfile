@@ -36,7 +36,7 @@ RUN echo "" > /msl/server/msl-ratings-edge/install-ratings-edge.sh
 
 WORKDIR /msl/msl-pages
 
-RUN npm install -g swagger-parser; npm install -g swagger; npm install -g node-gyp
+RUN npm install -g swagger-parser; npm install -g node-gyp
 
 # RUN npm run generate-swagger-html
 

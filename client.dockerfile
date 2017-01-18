@@ -16,7 +16,7 @@ RUN yum -y install gcc-c++ make
 
 RUN yum -y install ruby python;
 
-RUN yum -y install gcc g++ make automake autoconf curl-devel openssl-devel zlib-devel httpd-devel apr-devel apr-util-devel sqlite-devel
+RUN yum -y install gcc gcc-c++ make automake autoconf curl-devel openssl-devel zlib-devel httpd-devel apr-devel apr-util-devel sqlite-devel
 
 RUN yum -y install ruby-rdoc ruby-devel
 
@@ -32,7 +32,7 @@ COPY ./client-package.json /msl/msl-pages/package.json
 
 WORKDIR /msl/msl-pages
 
-RUN npm install -g swagger-parser; npm install -g swagger; npm install -g node-gyp
+RUN npm install -g swagger-parser; npm install -g node-gyp
 
 #RUN npm run parse-swagger-src
 
